@@ -1,0 +1,43 @@
+document.addEventListener('DOMContentLoaded', function () {
+    'use strict';
+
+    const feedbackForm = document.getElementById('feedbackForm');
+
+    if (feedbackForm) {
+        feedbackForm.addEventListener('submit', function (event) {
+            // 1. Stop the form from trying to do a traditional page reload
+            event.preventDefault();
+
+            if (!feedbackForm.checkValidity()) {
+                event.stopPropagation();
+            } else {
+                // 2. Grab the exact text values the user typed into your form fields
+                const name = document.getElementById('userName').value;
+                const email = document.getElementById('userEmail').value;
+                const type = document.getElementById('interactionType').value;
+                const message = document.getElementById('userMessage').value;
+
+                // 3. Format the text beautifully into a clean message template
+                const whatsappText = `*New Feedback from Treasure Trove Store Client*\n\n` +
+                                     `• *Name:* ${name}\n` +
+                                     `• *Email:* ${email}\n` +
+                                     `• *Inquiry:* ${type}\n` +
+                                     `• *Message:* ${message}`;
+
+                // 4. Encode the text safely so spaces and emojis don't break the web URL
+                const encodedText = encodeURIComponent(whatsappText);
+
+                // 5. Set your real phone number (Using Botswana country code 267)
+                const phoneNumber = "26771234567"; 
+
+                // 6. Launch the official WhatsApp chat link in a brand-new browser tab
+                window.open(`https://wa.me/${phoneNumber}?text=${encodedText}`, '_blank');
+                
+                // Show a friendly alert to tell the user what's happening
+                [span_1](start_span)alert('Thank you for reaching out to Treasure Trove Thrift Store! Redirecting your submission to WhatsApp...');[span_1](end_span)
+            }
+
+            feedbackForm.classList.add('was-validated');
+        }, false);
+    }
+});
