@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 const encodedText = encodeURIComponent(whatsappText);
 
                 // 5. Set your real phone number (Using Botswana country code 267)
-                const phoneNumber = "26771234567"; 
+                const phoneNumber = "26773214110"; 
 
                 // 6. Launch the official WhatsApp chat link in a brand-new browser tab
                 window.open(`https://wa.me/${phoneNumber}?text=${encodedText}`, '_blank');
